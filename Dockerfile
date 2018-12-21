@@ -15,7 +15,7 @@ RUN dpkg --force-depends -i wkhtmltox.deb
 RUN apt-get -y install -f --no-install-recommends
 RUN apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm
 RUN rm -rf /var/lib/apt/lists/* wkhtmltox.deb
-RUN pip install psycogreen==1.0
+# RUN pip install psycogreen==1.0
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 # RUN set -x; \
