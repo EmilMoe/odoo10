@@ -78,6 +78,7 @@ COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
 RUN chown odoo /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
 RUN mkdir -p /mnt/extra-addons \
