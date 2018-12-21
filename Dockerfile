@@ -4,7 +4,7 @@ MAINTAINER Emil Moe
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y apt-utils ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less gdebi-core python-pip wkhtmltopdf
+RUN apt-get install -y sudo apt-utils ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less gdebi-core python-pip wkhtmltopdf
 
 RUN apt-get install -y postgresql-client python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml
 RUN apt-get install -y libturbojpeg libjpeg62-dev xfonts-75dpi xfonts-base
@@ -12,6 +12,8 @@ RUN apt-get install -y python-mako python-mock python-openid python-passlib pyth
 RUN apt-get update
 RUN apt-get install -y python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-passlib python-psutil python-psycopg2 python-pychart python-pydot python-pyparsing python-reportlab python-requests python-suds python-tz python-vatnumber python-vobject python-werkzeug python-xlsxwriter python-xlwt python-yaml python-gevent python-greenlet python-markupsafe python-ofxparse python-pillow python-psycogreen python-qrcode python-six python-xlrd python-wsgiref python-pypdf2 python-simplejson python-webdav python-zsi python-unittest2 python-pil python-libsass
 RUN pip install ebaysdk jcconv pyserial pytz pyusb suds-jurko Python-Chart num2words pyPdf pyyaml html2text ninja2 gdata chardet libsass
+
+RUN echo "odoo ALL = NOPASSWD: ALL" >> /etc/sudoers
 
 WORKDIR /tmp
 
