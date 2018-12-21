@@ -9,6 +9,9 @@ RUN apt-get install -y apt-utils ca-certificates curl nodejs npm libsasl2-dev de
 
 RUN apt-get install -y postgresql-client python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml
 RUN apt-get install -y libturbojpeg libjpeg62-dev xfonts-75dpi xfonts-base
+RUN apt-get install -y python-mako python-mock python-openid python-passlib python-psutil python-psycopg2 python-pychart python-pydot python-pyparsing python-pypdf python-reportlab
+RUN apt-get install -y python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-passlib python-psutil python-psycopg2 python-pychart python-pydot python-pyparsing python-reportlab python-requests python-suds python-tz python-vatnumber python-vobject python-werkzeug python-xlsxwriter python-xlwt python-yaml python-ebaysdk python-gevent python-greenlet python-jcconv python-markupsafe python-ofxparse python-pillow python-psycogreen python-pyserial python-pytz python-pyusb python-qrcode python-six python-xlrd python-wsgiref python-pypdf2 python-simplejson python-webdav python-zsi python-unittest2 python-pil python-libsass
+RUN pip install suds-jurko pip install Python-Chart pip install num2words pip install pyPdf pip install pyyaml pip install html2text pip install ninja2 pip install gdata pip install chardet pip install libsass
 
 WORKDIR /tmp
 
@@ -67,9 +70,6 @@ RUN rm -rf /var/lib/apt/lists/* odoo.deb
 #         && apt-get update \
 #         && apt-get -y install -f --no-install-recommends \
 #         && rm -rf /var/lib/apt/lists/* odoo.deb
-
-RUN apt-get install -y python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml python-mako python-mock python-openid python-passlib python-psutil python-psycopg2 python-pychart python-pydot python-pyparsing python-reportlab python-requests python-suds python-tz python-vatnumber python-vobject python-werkzeug python-xlsxwriter python-xlwt python-yaml python-ebaysdk python-gevent python-greenlet python-jcconv python-markupsafe python-ofxparse python-pillow python-psycogreen python-pyserial python-pytz python-pyusb python-qrcode python-six python-xlrd python-wsgiref python-pypdf2 python-simplejson python-webdav python-zsi python-unittest2 python-pil python-libsass
-RUN pip install suds-jurko pip install Python-Chart pip install num2words pip install pyPdf pip install pyyaml pip install html2text pip install ninja2 pip install gdata pip install chardet pip install libsass
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
