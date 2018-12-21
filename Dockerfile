@@ -7,6 +7,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less gdebi-core python-pip
 # RUN apt-get install -y python-support python-gevent python-ldap python-renderpm python-vobject python-watchdog python-qrcode
 
+RUN apt-get install -y postgresql-client python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml
+
 WORKDIR /tmp
 
 RUN curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.jessie_amd64.deb
