@@ -4,7 +4,8 @@ MAINTAINER Emil Moe
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less python-gevent gdebi-core python-ldap python-pip python-qrcode python-renderpm python-support python-vobject python-watchdog
+RUN apt-get install -y ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less gdebi-core python-pip
+# RUN apt-get install -y python-support python-gevent python-ldap python-renderpm python-vobject python-watchdog python-qrcode
 
 WORKDIR /tmp
 
