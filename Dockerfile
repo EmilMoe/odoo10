@@ -8,6 +8,7 @@ RUN apt-get install -y ca-certificates curl nodejs npm libsasl2-dev default-jre 
 # RUN apt-get install -y python-support python-gevent python-ldap python-renderpm python-vobject python-watchdog python-qrcode
 
 RUN apt-get install -y postgresql-client python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml
+RUN apt-get install -y libjpeg62-turbo xfonts-75dpi xfonts-base
 
 WORKDIR /tmp
 
