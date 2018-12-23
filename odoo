@@ -1,0 +1,88 @@
+#!/bin/bash
+
+NAME=odoo
+
+if [ $# -eq 0 ]
+  then
+    echo "Odoo 10"
+    echo
+
+    echo "Options are:"
+
+    echo
+    echo "  Setup"
+    echo "    build             Build new instance. Will delete old ones!"
+    echo "    upgrade           Upgrade instances."
+    echo "    exec              Run command directly to the Odoo instance as root."
+
+    echo
+    echo "  Running"
+    echo "    start             Start all instances."
+    echo "    stop              Stop all instances."
+    echo "    debug             Start all instances with Odoo in debug mode."
+    echo "    restart <module>  Restart Odoo server. Optionally enter module, to reload after restart."
+    echo "    reload <module>   Reload a module in Odoo. Instead of using admin web interface."
+
+    echo
+    echo "   Logging"
+    echo "    log db            Show and follow log from Postgres."
+    echo "    log odoo          Show and follow log from Odoo"
+fi
+
+if [[ $1 = "build" ]] ; then
+    read -p "This will rebuild and overwriting any existing containers for this project. Are you sure? " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]] ; then
+        mkdir addons
+        mkdir data
+        mkdir pgdata
+
+        curl https://raw.githubusercontent.com/EmilMoe/odoo10/master/docker-compose.yml > docker-compose.yml
+
+        docker-compose build -d
+    fi
+fi
+
+if [[ $1 = "start" ]] ; then
+    docker container start ${NAME}_db_1
+    docker container start ${NAME}_odoo_1
+fi
+
+if [[ $1 = "stop" ]] ; then
+    docker container stop ${NAME}_db_1
+    docker container stop ${NAME}_odoo_1
+fi
+
+if [[ $1 = "debug" ]] ; then
+    docker container start ${NAME}_db_1
+    docker-compose run -p 8000:8000 ${NAME}_odoo_1 python -m pdb sudo /usr/bin/odoo
+fi
+
+if [[ $1 = "restart" ]] ; then
+    docker container exec ${NAME}_odoo_1 sudo /usr/bin/odoo restart
+fi
+
+if [[ $1 = "log" ]] ; then
+    if [[ $2 = "db" ]] ; then
+        echo "Showing log for Postgres"
+        docker logs --follow --tail 100 --since 3h odoo_db_1
+    fi
+
+    if [[ $2 = "odoo" ]] ; then
+        echo "Showing log for Odoo"
+        docker logs --follow --tail 100 --since 3h odoo_odoo_1
+    fi
+fi
+
+if [[ $1 = "exec" ]] ; then
+    docker exec ${NAME}_odoo_1 "sudo ${@:2}"
+fi
+
+if [[ $1 = "upgrade" ]] ; then
+    docker exec ${NAME}_odoo_1 sudo apt-get update
+    docker exec ${NAME}_db_1 sudo apt-get update
+    docker exec ${NAME}_odoo_1 sudo apt-get upgrade -y
+    docker exec ${NAME}_db_1 sudo apt-get upgrade -y
+    docker commit ${NAME}_odoo_1
+    docker commit ${NAME}_db_1
+fi
