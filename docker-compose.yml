@@ -4,7 +4,7 @@ services:
     build:
       context: https://github.com/EmilMoe/odoo10.git
     volumes:
-      - ./addons:/mnt/extra-addons
+      - ./addons:/mnt/addons
       - ./data:/var/lib/odoo
     ports:
       - "8069:8069"
