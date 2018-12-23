@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME=odoo
+NAME=$(echo "${PWD##*/}" | tr '[:upper:]' '[:lower:]' | tr -d '.')
 
 if [ $# -eq 0 ]
   then
