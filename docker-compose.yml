@@ -6,6 +6,7 @@ services:
     volumes:
       - ./addons:/mnt/addons
       - ./data:/var/lib/odoo
+      - ./modules:/usr/lib/python2.7/dist-packages/odoo/addons
     ports:
       - "8069:8069"
   db:
@@ -20,3 +21,4 @@ services:
       - "5432:5432"
 volumes:
   postgres:
+  modules:
