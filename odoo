@@ -41,8 +41,8 @@ if [[ $1 = "build" ]] ; then
         curl https://raw.githubusercontent.com/EmilMoe/odoo10/master/odoo.conf > odoo.conf
         curl https://raw.githubusercontent.com/EmilMoe/odoo10/master/docker-compose.yml > docker-compose.yml
         
-        docker volume create postgres
-        docker volume create modules
+        docker volume create --name postgres -d local
+        docker volume create --name modules -d local
 
         docker-compose up --build -d
     fi
