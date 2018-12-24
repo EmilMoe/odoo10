@@ -39,7 +39,7 @@ RUN chmod +x /entrypoint.sh
 RUN mkdir -p /mnt/addons
 
 RUN chown odoo -R /mnt/addons
-RUN chown odoo -R /usr/lib/python2.7/dist-packages/odoo/addons
+RUN chown odoo -R /usr/lib/python2.7/dist-packages/odoo
 RUN chown odoo -R /var/lib/odoo
 
 VOLUME ["/var/lib/odoo", "/mnt/addons"]
