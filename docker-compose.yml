@@ -7,9 +7,10 @@ services:
       - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/addons
       - ./data:/var/lib/odoo
-      - modules:/usr/lib/python2.7/dist-packages/odoo
+      - ./modules:/usr/lib/python2.7/dist-packages/odoo
     ports:
       - "8069:8069"
+      
   db:
     image: postgres:9.6
     environment:
@@ -17,9 +18,6 @@ services:
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - pgdata:/var/lib/postgresql/data/pgdata
+      - ./pgdata:/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
-volumes:
-  - pgdata:
-  - modules:
