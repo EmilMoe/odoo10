@@ -35,13 +35,13 @@ COPY ./entrypoint.sh /
 RUN chown odoo /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN chown odoo /mnt/addons
-RUN chown odoo /usr/lib/python2.7/dist-packages/odoo/addons
-RUN chown odoo /var/lib/odoo
-
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/addons for users addons
-RUN mkdir -p /mnt/addons \
-        && chown -R odoo /mnt/addons
+RUN mkdir -p /mnt/addons
+
+RUN chown odoo -R /mnt/addons
+RUN chown odoo -R /usr/lib/python2.7/dist-packages/odoo/addons
+RUN chown odoo -R /var/lib/odoo
+
 VOLUME ["/var/lib/odoo", "/mnt/addons", "/usr/lib/python2.7/dist-packages/odoo/addons"]
 
 # Expose Odoo services
