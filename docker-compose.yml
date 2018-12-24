@@ -3,6 +3,8 @@ services:
   odoo:
     build:
       context: https://github.com/EmilMoe/odoo10.git
+    env_file:
+      - odoo.conf
     volumes:
       - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/addons
