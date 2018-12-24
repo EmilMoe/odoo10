@@ -9,7 +9,7 @@ services:
       - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/addons
       - ./data:/var/lib/odoo
-      - ./modules:/usr/lib/python2.7/dist-packages/odoo
+      - ./odoo:/usr/lib/python2.7/dist-packages/odoo
     ports:
       - "8069:8069"
       
