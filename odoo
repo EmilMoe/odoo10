@@ -36,7 +36,7 @@ if [[ $1 = "build" ]] ; then
         mkdir addons
         mkdir data
         mkdir pgdata
-        mkdir modules
+        mkdir odoo
 
         curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/EmilMoe/odoo10/master/odoo.conf > odoo.conf
         curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/EmilMoe/odoo10/master/docker-compose.yml > docker-compose.yml
