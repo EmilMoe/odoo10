@@ -30,8 +30,8 @@ RUN rm -rf /var/lib/apt/lists/* odoo.deb
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
-COPY ./odoo.conf /etc/odoo/
-RUN chown odoo /etc/odoo/odoo.conf
+# COPY ./odoo.conf /etc/odoo/
+# RUN chown odoo /etc/odoo/odoo.conf
 RUN chown odoo /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
@@ -44,7 +44,7 @@ VOLUME ["/var/lib/odoo", "/mnt/addons", "/usr/lib/python2.7/dist-packages/odoo/a
 EXPOSE 8069 8071
 
 # Set the default config file
-ENV ODOO_RC /etc/odoo/odoo.conf
+# ENV ODOO_RC /etc/odoo/odoo.conf
 
 # Set default user when running the container
 USER odoo
