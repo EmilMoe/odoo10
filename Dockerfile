@@ -4,13 +4,6 @@ MAINTAINER Emil Moe
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
-RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture)" \
-    && curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture).asc" \
-    && gpg --verify /usr/local/bin/gosu.asc \
-    && rm /usr/local/bin/gosu.asc \
-    && chmod +x /usr/local/bin/gosu
-
 RUN apt-get install -y sudo apt-utils ca-certificates curl nodejs npm libsasl2-dev default-jre bzr node-less gdebi-core python-pip wkhtmltopdf
 
 RUN apt-get install -y postgresql-client python-babel python-dateutil python-decorator python-docutils python-feedparser python-imaging python-jinja2 python-ldap python-libxslt1 python-lxml
