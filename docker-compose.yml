@@ -4,6 +4,7 @@ services:
     build:
       context: https://github.com/EmilMoe/odoo10.git
     volumes:
+      - ./odoo.conf:/etc/odoo/odoo.conf
       - ./addons:/mnt/addons
       - ./data:/var/lib/odoo
       - ./modules:/usr/lib/python2.7/dist-packages/odoo/addons
